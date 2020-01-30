@@ -1,0 +1,140 @@
+[
+    {
+        "date_start": "01-21-2020",
+        "date_finish": "03-10-2020",
+        "season": "winter_2_2020",
+        "points": 3,
+        "place": 4,
+        "GF": 17,
+        "GA": 10,
+        "GD": 7,
+        "w": 1,
+        "T": 0,
+        "L": 1,
+        "attendance": {
+            "Artyom": 2,
+            "Renat": 2,
+            "Danik": 2,
+            "Leo": 2,
+            "Denis": 2,
+            "Anton": 1,
+            "Igor": 2,
+            "Alex": 2,
+            "Daniel": 0,
+            "Josh": 2,
+            "Zack": 0,
+            "Zhenya": 0
+        },
+        "best_scorer": {
+            "Artyom": 2,
+            "Renat": 2,
+            "Danik": 2,
+            "Leo": 2,
+            "Denis": 2,
+            "Anton": 1,
+            "Igor": 2,
+            "Alex": 2,
+            "Daniel": 0,
+            "Josh": 2,
+            "Zack": 0,
+            "Zhenya": 0
+        }
+    },
+
+    {
+        "date_start": "11-05-2019",
+        "date_finish": "01-14-2020",
+        "season": "winter_1_2019",
+        "points": 15,
+        "place": 3,
+        "GF": 53,
+        "GA": 27,
+        "GD": 26,
+        "w": 5,
+        "T": 0,
+        "L": 3,
+        "attendance": {
+            "Artyom": 8,
+            "Renat": 5,
+            "Danik": 8,
+            "Leo": 6,
+            "Denis": 7,
+            "Anton": 4,
+            "Igor": 8,
+            "Alex": 7,
+            "Daniel": 5,
+            "Josh": 4
+        }
+    },
+
+    {
+        "date_start": "10-29-2019",
+        "date_finish": "10-29-2019",
+        "season": "fall_2019",
+        "points": 13,
+        "place": 4,
+        "GF": 60,
+        "GA": 47,
+        "GD": 13,
+        "w": 4,
+        "T": 1,
+        "L": 5,
+        "attendance": {}
+    },
+
+    {
+        "date": "07-23-2019",
+        "season": "summer_2019",
+        "points": 18,
+        "place": 3,
+        "GF": 63,
+        "GA": 32,
+        "GD": 31,
+        "w": 6,
+        "T": 0,
+        "L": 2,
+        "attendance": {}
+    },
+
+    {
+        "date": "05-28-2019",
+        "season": "spring_2019",
+        "points": 18,
+        "place": 5,
+        "GF": 62,
+        "GA": 45,
+        "GD": 17,
+        "w": 6,
+        "T": 0,
+        "L": 4,
+        "absence": {}
+    },
+
+    {
+        "date": "01-14-2019",
+        "season": "winter_1_2019",
+        "points": 16,
+        "place": 3,
+        "GF": 50,
+        "GA": 37,
+        "GD": 13,
+        "w": 5,
+        "T": 1,
+        "L": 2,
+        "attendance": {}
+    },
+
+    {
+        "date": "01-02-2018",
+        "season": "winter_1_2017",
+        "points": 9,
+        "place": 3,
+        "GF": 45,
+        "GA": 56,
+        "GD": -11,
+        "w": 3,
+        "T": 0,
+        "L": 5,
+        "attendance": {}
+    }
+]
