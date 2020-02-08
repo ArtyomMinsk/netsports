@@ -37,11 +37,15 @@ function generateTeamPerformanceChart(places, dates, labels){
             datasets: [{
                 // label: "Team Performance",
                 data: places,
-                fill: false
-                // backgroundColor: "#3399FF",
+                fill: false,
+                // backgroundColor: "#8000ff",
                 // backgroundColor: ["#3399FF", "#8000ff", "#ff0040", "#00ffff", "#ff8000", "#ffff00"],
                 // borderWidth: 1,
-                // borderColor: "#777",
+                borderColor: "#3399FF",
+                lineTension: 0,
+                pointRadius: 5,
+                borderDash: [5, 15],
+                pointBackgroundColor: "#ff3410"
                 // hoverBorderWidth: 1,
                 // hoverBorderColor: "#000"
             }]
@@ -59,18 +63,25 @@ function generateTeamPerformanceChart(places, dates, labels){
                     fontColor: "#000"
                 }
             },
-            layout: {
-                padding: {
-                    left: 50,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
+
+            // layout: {
+            //     padding: {
+            //         left: 0,
+            //         right: 0,
+            //         bottom: 0,
+            //         top: 0
+            //     }
+            // },
             scales: {
+                xAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: "NETSPORTS SEASON"
+                    }
+                }],
+
                 yAxes: [{
                     display: true,
-                    title: "Place",
                     ticks: {
                         // beginAtZero: true,
                         reverse: true,
@@ -79,18 +90,19 @@ function generateTeamPerformanceChart(places, dates, labels){
 
                     },
 
-                    // override: {
-                    //     start: 10,
-                    //     steps: 10,
-                    //     stepWidth: -1
-                    // }
-                }],
-                // display: true,
-                // labelString: "Place"
+                    scaleLabel: {
+                    display: true,
+                    labelString: "RANKING"
+                    }
+                }]
             },
 
             tooltips: {
                 enabled: true
+            },
+
+            animation: {
+                animateScale: true
             }
         }
     });
