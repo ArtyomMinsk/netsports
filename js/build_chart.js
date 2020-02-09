@@ -1,7 +1,7 @@
 function load_data(){
     $.ajax({
         dataType: "json",
-        url: "../netsports/data/season_stats.json",
+        url: "../data/season_stats.json",
         success: function (data){
             preprocessData(data);
         }
