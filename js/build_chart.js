@@ -11,43 +11,53 @@ function load_data(){
 function preprocessData(data){
     let dates = [],
         places = [],
-        labels = [],
-        bestScorerObj = data[0]["best_scorer"];
+        topScorerObj = data[0]["best_scorer"],
+        playerAttendanceObj = data[0]["attendance"];
 
     data.reverse();
     for(let item of data){
         dates.push(item["date_start"]);
         places.push(item["place"]);
-        labels.push(item["season"]);
     }
 
-    let bestScoreObjArr = [];
-    Object.entries(bestScorerObj).forEach(
-        ([key, value]) => bestScoreObjArr.push([key, value])
+    let topScorerLabelsAndData = getLabelsAndData(topScorerObj),
+        topScorerLabels = topScorerLabelsAndData[0],
+        topScorerData = topScorerLabelsAndData[1];
+    let maxGoals = Math.max(...topScorerData);
+
+    let attendanceLabelsAndData = getLabelsAndData(playerAttendanceObj),
+        attendanceLabels = attendanceLabelsAndData[0],
+        attendanceData = attendanceLabelsAndData[1];
+
+    let maxAttendance = Math.max(...attendanceData);
+
+    generateTeamPerformanceChart(places, dates);
+    generateTopScorerChart(topScorerLabels, topScorerData, maxGoals);
+    generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance);
+};
+
+function getLabelsAndData(obj){
+    let objArr = [],
+        labelsArray = [],
+        dataArray = [];
+
+    Object.entries(obj).forEach(
+        ([key, value]) => objArr.push([key, value])
     );
 
-    let bestScoreObjArrSorted = bestScoreObjArr.sort((a, b) => {
+    let objArrSorted = objArr.sort((a, b) => {
         return b[1] - a[1];
     });
 
-    let bestScorerLabels = [],
-        bestScorerData = [];
-    for(let item of bestScoreObjArrSorted){
-        bestScorerLabels.push(item[0]);
-        bestScorerData.push(item[1]);
+    for(let item of objArrSorted){
+        labelsArray.push(item[0]);
+        dataArray.push(item[1]);
     }
 
-    let maxGoals = Math.max(...bestScorerData);
-    console.log(maxGoals);
-
-    generateTeamPerformanceChart(places, dates, labels);
-    generateTopScorerChart(bestScorerLabels, bestScorerData, maxGoals);
+    return [labelsArray, dataArray];
 };
 
-function generateTeamPerformanceChart(places, dates, labels){
-    places.pop();
-    dates.pop();
-    labels.pop();
+function generateTeamPerformanceChart(places, dates){
 
     let myChart = document.getElementById("team_perf").getContext("2d");
     let teamPerformanceChart = new Chart(myChart, {
@@ -122,16 +132,16 @@ function generateTeamPerformanceChart(places, dates, labels){
     });
 };
 
-function generateTopScorerChart(bestScorerLabels, bestScorerData, maxGoals){
-    let myChart2 = document.getElementById("top_scorer").getContext("2d");
-    let topScorerChart = new Chart(myChart2, {
+function generateTopScorerChart(topScorerLabels, topScorerData, maxGoals){
+    let myChart = document.getElementById("top_scorer").getContext("2d");
+    let topScorerChart = new Chart(myChart, {
         type: "horizontalBar",
         data: {
-            labels: bestScorerLabels,
+            labels: topScorerLabels,
             datasets: [{
                 label: "Goals",
                 display: false,
-                data: bestScorerData,
+                data: topScorerData,
                 backgroundColor: ["#3399FF", "#8000ff", "#ff0040", "#00ffff", "#ff8000", "#ffff00",
                                   "#c679ff", "#ff2a97", "#ffa51c", "#fffb21", "#54FF18", "#5DFFA4"],
                 borderWidth: 0.5,
@@ -163,6 +173,54 @@ function generateTopScorerChart(bestScorerLabels, bestScorerData, maxGoals){
                         beginAtZero: true,
                         stepSize: 1,
                         suggestedMax: maxGoals + 1
+                    }
+                }]
+            }
+        }
+    });
+};
+
+function generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance){
+    let myChart = document.getElementById("player_attendance").getContext("2d");
+    let topScorerChart = new Chart(myChart, {
+        type: "bar",
+        data: {
+            labels: attendanceLabels,
+            datasets: [{
+                label: "Attended",
+                display: false,
+                data: attendanceData,
+                backgroundColor: ["#3399FF", "#8000ff", "#ff0040", "#00ffff", "#ff8000", "#ffff00",
+                                  "#c679ff", "#ff2a97", "#ffa51c", "#fffb21", "#54FF18", "#5DFFA4"],
+                borderWidth: 0.5,
+                borderColor: "#777",
+                hoverBorderWidth: 1,
+                hoverBorderColor: "#000"
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Player Attendance",
+                fontSize: 20
+            },
+            order: 1,
+
+            legend: {
+                display: false
+            },
+
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Attended Games",
+                        fontSize: 14
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        suggestedMax: maxAttendance + 1
                     }
                 }]
             }
