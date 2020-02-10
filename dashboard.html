@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=enge">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <title>Dashboard</title>
 </head>
-<body>
+<body style="background-color: #908d8d">
     <div class="container">
-        <canvas id="myChart"></canvas>
+        <div class="row">
+            <div class="col-sm-12" style="background-color: #fff">
+                <h4 align="center">INTER Dashboard</h4>
+                <canvas id="team_perf"></canvas>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 align="center">Current Season Stats</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-6" style="background-color: #fff">
+                <canvas id="top_scorer"></canvas>
+            </div>
+            <div class="col-md-12 col-lg-6" style="background-color: #fff">
+                <canvas id="player_attendance"></canvas>
+            </div>
+        </div>
     </div>
 
     <script src="js/build_chart.js" type="text/javascript"></script>
