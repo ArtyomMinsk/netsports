@@ -140,15 +140,15 @@ function generateTeamPerformanceChart(places, dates){
                 animateScale: true
             },
 
-            plugins: {
-                zoom: {
-                    // zoom: {
-                        enabled: true,
-                        drag: true,
-                        mode: "xy"
-                    // }
-                }
-            }
+            // plugins: {
+            //     zoom: {
+            //         // zoom: {
+            //             enabled: true,
+            //             drag: true,
+            //             mode: "xy"
+            //         // }
+            //     }
+            // }
         }
     });
 };
