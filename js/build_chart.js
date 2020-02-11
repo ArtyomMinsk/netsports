@@ -73,9 +73,17 @@ function generateTeamPerformanceChart(places, dates){
                 fill: false,
                 borderColor: "#3399FF",
                 lineTension: 0,
-                pointRadius: 5,
+                // pointRadius: 5,
+                pointRadius: function(context){
+                    let index = context.dataIndex;
+                    return index === 8 ? 9 : 5;
+                },
                 borderDash: [5, 15],
-                pointBackgroundColor: "#ff3410"
+                // pointBackgroundColor: "#ff3410"
+                pointBackgroundColor: function(context){
+                    let index = context.dataIndex;
+                    return index === 8 ? "#8F2CFF" : "#ff3410";
+                }
             }]
         },
         options: {
@@ -130,6 +138,16 @@ function generateTeamPerformanceChart(places, dates){
 
             animation: {
                 animateScale: true
+            },
+
+            plugins: {
+                zoom: {
+                    // zoom: {
+                        enabled: true,
+                        drag: true,
+                        mode: "xy"
+                    // }
+                }
             }
         }
     });
@@ -256,7 +274,6 @@ function generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance
             }
         }
     });
-    console.log(playerAttendanceChart);
 };
 
 function generateTeamGoalsChart(goalsLabels, goalsData){
