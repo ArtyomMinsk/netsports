@@ -1,7 +1,7 @@
 function load_data(){
     $.ajax({
         dataType: "json",
-        url: "../data/season_stats.json",
+        url: "../netsports/data/season_stats.json",
         success: function (data){
             preprocessData(data);
         }
@@ -13,6 +13,9 @@ function preprocessData(data){
         places = [],
         topScorerObj = data[0]["best_scorer"],
         playerAttendanceObj = data[0]["attendance"];
+
+    let goalsLabels = ["GF", "GA", "GD"],
+        goalsData = [data[0]["GF"], data[0]["GA"], data[0]["GD"]];
 
     data.reverse();
     for(let item of data){
@@ -34,6 +37,7 @@ function preprocessData(data){
     generateTeamPerformanceChart(places, dates);
     generateTopScorerChart(topScorerLabels, topScorerData, maxGoals);
     generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance);
+    generateTeamGoalsChart(goalsLabels, goalsData);
 };
 
 function getLabelsAndData(obj){
@@ -58,8 +62,7 @@ function getLabelsAndData(obj){
 };
 
 function generateTeamPerformanceChart(places, dates){
-
-    let myChart = document.getElementById("team_perf").getContext("2d");
+    let myChart = $("#team_perf");
     let teamPerformanceChart = new Chart(myChart, {
         type: "line",
         data: {
@@ -79,14 +82,14 @@ function generateTeamPerformanceChart(places, dates){
             title: {
                 display: true,
                 text: "Team Performance",
-                fontSize: 20
+                fontSize: 16
             },
 
             layout: {
                 padding: {
                     left: 0,
                     right: 0,
-                    bottom: 0,
+                    bottom: 30,
                     top: 0
                 }
             },
@@ -115,7 +118,7 @@ function generateTeamPerformanceChart(places, dates){
 
                     scaleLabel: {
                         display: true,
-                        labelString: "Table Ranking",
+                        labelString: "Ranking",
                         fontSize: 14
                     }
                 }]
@@ -133,7 +136,7 @@ function generateTeamPerformanceChart(places, dates){
 };
 
 function generateTopScorerChart(topScorerLabels, topScorerData, maxGoals){
-    let myChart = document.getElementById("top_scorer").getContext("2d");
+    let myChart = $("#top_scorer");
     let topScorerChart = new Chart(myChart, {
         type: "horizontalBar",
         data: {
@@ -142,19 +145,20 @@ function generateTopScorerChart(topScorerLabels, topScorerData, maxGoals){
                 label: "Goals",
                 display: false,
                 data: topScorerData,
+                // fill: false,
                 backgroundColor: ["#3399FF", "#8000ff", "#ff0040", "#00ffff", "#ff8000", "#ffff00",
                                   "#c679ff", "#ff2a97", "#ffa51c", "#fffb21", "#54FF18", "#5DFFA4"],
                 borderWidth: 0.5,
                 borderColor: "#777",
                 hoverBorderWidth: 1,
-                hoverBorderColor: "#000"
+                hoverBorderColor: "#000",
             }]
         },
         options: {
             title: {
                 display: true,
                 text: "Top Scorer",
-                fontSize: 20
+                fontSize: 16
             },
             order: 1,
 
@@ -175,14 +179,23 @@ function generateTopScorerChart(topScorerLabels, topScorerData, maxGoals){
                         suggestedMax: maxGoals + 1
                     }
                 }]
+            },
+
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    bottom: 10,
+                    top: 0
+                }
             }
         }
     });
 };
 
 function generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance){
-    let myChart = document.getElementById("player_attendance").getContext("2d");
-    let topScorerChart = new Chart(myChart, {
+    let myChart = $("#player_attendance");
+    let playerAttendanceChart = new Chart(myChart, {
         type: "bar",
         data: {
             labels: attendanceLabels,
@@ -195,14 +208,15 @@ function generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance
                 borderWidth: 0.5,
                 borderColor: "#777",
                 hoverBorderWidth: 1,
-                hoverBorderColor: "#000"
+                hoverBorderColor: "#000",
+                fill: false
             }]
         },
         options: {
             title: {
                 display: true,
                 text: "Player Attendance",
-                fontSize: 20
+                fontSize: 16
             },
             order: 1,
 
@@ -221,7 +235,56 @@ function generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance
                         beginAtZero: true,
                         stepSize: 1,
                         suggestedMax: maxAttendance + 1
-                    }
+                    },
+                    offsetGridLines: true
+                }]
+            },
+
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    bottom: 10,
+                    top: 0
+                }
+            },
+
+            plugins: {
+                labels: {
+                    render: function (args){ return "";}
+                }
+            }
+        }
+    });
+    console.log(playerAttendanceChart);
+};
+
+function generateTeamGoalsChart(goalsLabels, goalsData){
+    let myChart = $("#team_goals");
+    let teamGoalsChart = new Chart(myChart, {
+        type: "doughnut",
+        data: {
+            labels: goalsLabels,
+            datasets: [{
+                label: "Goals",
+                // display: false,
+                data: goalsData,
+                backgroundColor: ["#3399FF", "#FF4F17", "#9FFFAF"],
+            }]
+        },
+
+        options: {
+            plugins: {
+                labels: [{
+                    render: 'label',
+                    position: 'outside',
+                    fontSize: 16,
+                    fontStyle: 'bold'
+                    },
+                    {
+                    render: 'value',
+                    fontSize: 16,
+                    fontStyle: 'bold'
                 }]
             }
         }
