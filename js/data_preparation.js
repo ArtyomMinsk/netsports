@@ -23,7 +23,9 @@ function preprocessData(data){
 
     data.reverse();
     for(let item of data){
-        dates.push(item["date_start"]);
+        let date = Date.parse(item["date_start"]).toString("MMM-yyyy");
+
+        dates.push(date);
         places.push(item["place"]);
         points.push(item["points"]);
     }
