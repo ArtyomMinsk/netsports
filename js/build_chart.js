@@ -15,7 +15,7 @@ export function generateTeamPerformanceChart(places, dates, points){
                     return index === 8 ? 9 : 5;
                 },
                 pointHoverRadius: 10,
-                borderDash: [5, 15],
+                // borderDash: [5, 15],
                 pointBackgroundColor: function(context){
                     let index = context.dataIndex;
                     return index === 8 ? "#8F2CFF" : "#ff3410";
@@ -54,9 +54,9 @@ export function generateTeamPerformanceChart(places, dates, points){
                 }
             },
 
-            legend: {
-                display: false
-            },
+            // legend: {
+            //     display: false
+            // },
 
             scales: {
                 xAxes: [{
