@@ -284,3 +284,30 @@ export function generateTeamGoalsChart(goalsLabels, goalsData){
         }
     });
 };
+
+export function generateSeasonResultChart(seasonResultLabels, seasonResultData){
+    let myChart = $("#season_results");
+    let seasonResultChart = new Chart(myChart, {
+        type: "radar",
+        data: {
+            labels: seasonResultLabels,
+            datasets: [{
+                label: "Game Results",
+                // display: false,
+                data: seasonResultData,
+                backgroundColor: "rgb(51, 153, 255, 0.4)",
+            }]
+        },
+
+        options: {
+            scale: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1,
+                    suggestedMax: seasonResultData.reduce((a,b) => a + b, 0)
+                }
+            }
+
+        }
+    });
+};
