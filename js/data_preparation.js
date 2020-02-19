@@ -1,5 +1,5 @@
 import { generateTeamPerformanceChart, generateTopScorerChart,
-         generateAttendanceChart, generateTeamGoalsChart } from "./build_chart.js";
+         generateAttendanceChart, generateTeamGoalsChart, generateSeasonResultChart } from "./build_chart.js";
 
 function load_data(){
     $.ajax({
@@ -19,7 +19,9 @@ function preprocessData(data){
         playerAttendanceObj = data[0]["attendance"];
 
     let goalsLabels = ["GF", "GA", "GD"],
-        goalsData = [data[0]["GF"], data[0]["GA"], data[0]["GD"]];
+        goalsData = [data[0]["GF"], data[0]["GA"], data[0]["GD"]],
+        seasonResultLabels = ["W", "T", "L"],
+        seasonResultData = [data[0]["W"], data[0]["T"], data[0]["L"]];
 
     data.reverse();
     for(let item of data){
@@ -45,6 +47,7 @@ function preprocessData(data){
     generateTopScorerChart(topScorerLabels, topScorerData, maxGoals);
     generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance);
     generateTeamGoalsChart(goalsLabels, goalsData);
+    generateSeasonResultChart(seasonResultLabels, seasonResultData);
 };
 
 function getLabelsAndData(obj){
