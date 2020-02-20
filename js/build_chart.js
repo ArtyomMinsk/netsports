@@ -1,4 +1,4 @@
-export function generateTeamPerformanceChart(places, dates, points){
+export function generateTeamPerformanceChart(ranking, dates, points){
     let myChart = $("#team_perf");
     let teamPerformanceChart = new Chart(myChart, {
         type: "line",
@@ -6,19 +6,19 @@ export function generateTeamPerformanceChart(places, dates, points){
             labels: dates,
             datasets: [{
                 label: "Ranking",
-                data: places,
+                data: ranking,
                 fill: false,
                 borderColor: "#3399FF",
                 lineTension: 0,
                 pointRadius: function(context){
                     let index = context.dataIndex;
-                    return index === 8 ? 9 : 5;
+                    return index === ranking.length - 1 ? 9 : 5;
                 },
                 pointHoverRadius: 10,
                 // borderDash: [5, 15],
                 pointBackgroundColor: function(context){
                     let index = context.dataIndex;
-                    return index === 8 ? "#8F2CFF" : "#ff3410";
+                    return index === ranking.length - 1 ? "#8F2CFF" : "#ff3410";
                 },
                 yAxisID: 'y'
             },
@@ -150,7 +150,7 @@ export function generateTopScorerChart(topScorerLabels, topScorerData, maxGoals)
         options: {
             title: {
                 display: true,
-                text: "Top Scorer",
+                text: "Top Goal Scorer",
                 fontSize: 16
             },
             order: 1,

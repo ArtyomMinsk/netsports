@@ -13,7 +13,7 @@ function load_data(){
 
 function preprocessData(data){
     let dates = [],
-        places = [],
+        ranking = [],
         points = [],
         topScorerObj = data[0]["best_scorer"],
         playerAttendanceObj = data[0]["attendance"];
@@ -28,7 +28,7 @@ function preprocessData(data){
         let date = Date.parse(item["date_start"]).toString("MMM-yyyy");
 
         dates.push(date);
-        places.push(item["place"]);
+        ranking.push(item["place"]);
         points.push(item["points"]);
     }
 
@@ -43,7 +43,7 @@ function preprocessData(data){
 
     let maxAttendance = Math.max(...attendanceData);
 
-    generateTeamPerformanceChart(places, dates, points);
+    generateTeamPerformanceChart(ranking, dates, points);
     generateTopScorerChart(topScorerLabels, topScorerData, maxGoals);
     generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance);
     generateTeamGoalsChart(goalsLabels, goalsData);
