@@ -1,5 +1,17 @@
-import { generateTeamPerformanceChart, generateTopScorerChart,
-         generateAttendanceChart, generateTeamGoalsChart, generateSeasonResultChart } from "./build_chart.js";
+import { generateTeamPerformanceChart, generateTopScorerChart, generateAttendanceChart,
+         generateTeamGoalsChart, generateSeasonResultChart, generateTableGoalStatsChart } from "./build_chart.js";
+
+const tableGoalStats = [
+    ["INTER", 50, 16, 34],
+    ["Arsenal 20", 21, 20, 1],
+    ["Juventus 20", 27, 20, 7],
+    ["Slim Jackets", 16, 16, 0],
+    ["Tailgators", 20, 22, -2],
+    ["AVQP", 15, 50, -35],
+    ["FC Fenerbahce", 31, 33, -2],
+    ["True FC", 24, 29, -5],
+    ["Los Intergalacticos CF", 19, 28, -9]
+];
 
 function load_data(){
     $.ajax({
@@ -71,4 +83,20 @@ function getLabelsAndData(obj){
     return [labelsArray, dataArray];
 };
 
+function processTableGoalStats(tableGoalStats){
+    let teamLabels = [],
+        GF = [],
+        GA = [],
+        GD = [];
+    for(let item of tableGoalStats){
+        teamLabels.push(item[0]);
+        GF.push(item[1]);
+        GA.push(item[2]);
+        GD.push(item[3]);
+    }
+
+    generateTableGoalStatsChart(teamLabels, GF, GA, GD);
+};
+
 load_data();
+processTableGoalStats(tableGoalStats);
