@@ -311,3 +311,42 @@ export function generateSeasonResultChart(seasonResultLabels, seasonResultData){
         }
     });
 };
+
+export function generateTableGoalStatsChart(teamLabels, GF, GA, GD){
+    let myChart = $("#gf_ga_gd");
+    let tableGoalStatsChart = new Chart(myChart, {
+        type: "bar",
+        data: {
+            labels: teamLabels,
+            datasets: [{
+                label: "GF",
+                data: GF,
+                backgroundColor: "rgb(51, 153, 255, 0.5)"
+            }, {
+                label: "GA",
+                data: GA,
+                backgroundColor: "rgb(255, 0, 64, 0.5)"
+            }, {
+                label: "GD",
+                data: GD,
+                backgroundColor: "rgb(84, 255, 24, 0.5)"
+            }]
+        },
+
+        options: {
+            plugins: {
+                labels: {
+                    render: function (args){ return "";}
+                }
+            }
+            // scale: {
+            //     beginAtZero: true,
+            //     ticks: {
+            //         stepSize: 1,
+            //         suggestedMax: seasonResultData.reduce((a,b) => a + b, 0)
+            //     }
+            // }
+
+        }
+    });
+};

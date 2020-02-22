@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=enge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <!--    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>-->
 <!--    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>-->
@@ -16,6 +17,110 @@
 </head>
 <body style="background-color: #908d8d">
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="background-color: #fff">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schedule">
+                    Schedule
+                </button>
+
+                <div class="modal fade" id="schedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Jan - Mar 2020 Schedule</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-hover" style="font-family: Helvetica Neue; color: #666">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Away</th>
+                                            <th>Home</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Jan 21st 2020</td>
+                                            <td>7:00 pm</td>
+                                            <td>Juventus 20</td>
+                                            <td>INTER</td>
+                                            <td>6 - 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jan 28th 2020</td>
+                                            <td>9.40 pm</td>
+                                            <td>INTER</td>
+                                            <td>FC Fenerbahce</td>
+                                            <td>14 - 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Feb 4th 2020</td>
+                                            <td>8.00 pm</td>
+                                            <td>INTER</td>
+                                            <td>AVQP</td>
+                                            <td>13 - 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Feb 11th 2020</td>
+                                            <td>8.00 pm</td>
+                                            <td>Tailgators</td>
+                                            <td>INTER</td>
+                                            <td>1 - 9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Feb 18th 2020</td>
+                                            <td>10.20 pm</td>
+                                            <td>INTER</td>
+                                            <td>Los Intergalacticos CF</td>
+                                            <td>10 - 1</td>
+                                        </tr>
+                                        <tr class="table-primary">
+                                            <td>6</td>
+                                            <td>Feb 25th 2020</td>
+                                            <td>9.30 pm</td>
+                                            <td>INTER</td>
+                                            <td>Arsenal 20</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Mar 3d 2020</td>
+                                            <td>8.50 pm</td>
+                                            <td>Tailgators</td>
+                                            <td>INTER</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Mar 10th 2020</td>
+                                            <td>9.40 pm</td>
+                                            <td>True FC</td>
+                                            <td>INTER</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12" style="background-color: #fff">
                 <canvas id="team_perf"></canvas>
@@ -53,9 +158,6 @@
             <div class="col-md-12 col-lg-6" style="background-color: #fff">
                 <canvas id="team_goals"></canvas>
             </div>
-<!--            <div class="col-md-12 col-lg-5" style="background-color: #fff">-->
-<!--                <canvas id="season_results"></canvas>-->
-<!--            </div>-->
             <div class="col-md-12 col-lg-6" style="background-color: #fff">
                 <canvas id="gf_ga_gd"></canvas>
             </div>
