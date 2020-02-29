@@ -16,7 +16,7 @@
     <link href="css/main.css" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<body style="background-color: #908d8d">
+<body>
     <div class="container">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark inter-nav">
             <a class="navbar-brand">
@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-hover" style="font-family: Helvetica Neue; color: #666">
+                        <table class="table table-hover dashboard-font">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -48,6 +48,7 @@
                                     <th>Away</th>
                                     <th>Home</th>
                                     <th>Score</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,17 +133,17 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12" style="background-color: #fff">
+            <div class="col-sm-12 bg-light">
                 <canvas id="team_perf"></canvas>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-12" style="background-color: #fff">
-                <h5 align="center" style="font-family: Helvetica Neue; color: #666">Current Season Stats</h5>
+            <div class="col-sm-12 bg-light">
+                <h5 align="center" class="dashboard-font">Current Season Stats</h5>
                 <table align="center">
                     <tr>
-                        <td align="center" colspan="5" style="font-family: Helvetica Neue; color: #666">Last 5</td>
+                        <td align="center" colspan="5" class="dashboard-font">Last 5</td>
                     </tr>
                     <tr>
                         <td><img src="icons/win.svg" alt="Win"></td>
@@ -156,19 +157,19 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 col-lg-6" style="background-color: #fff">
+            <div class="col-sm-12 col-lg-6 bg-light">
                 <canvas id="top_scorer"></canvas>
             </div>
-            <div class="col-sm-12 col-lg-6" style="background-color: #fff">
+            <div class="col-sm-12 col-lg-6 bg-light">
                 <canvas id="player_attendance"></canvas>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12 col-lg-6" style="background-color: #fff">
+            <div class="col-md-12 col-lg-6 bg-light">
                 <canvas id="team_goals"></canvas>
             </div>
-            <div class="col-md-12 col-lg-6" style="background-color: #fff">
+            <div class="col-md-12 col-lg-6 bg-light">
                 <canvas id="gf_ga_gd"></canvas>
             </div>
         </div>

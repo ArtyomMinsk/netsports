@@ -1,4 +1,13 @@
+body {
+    background-color: #908d8d;
+}
+
 .inter-nav {
     margin-left: -1em;
     margin-right: -1em;
+}
+
+.dashboard-font {
+    font-family: Helvetica Neue;
+    color: #666;
 }
