@@ -2,15 +2,15 @@ import { generateTeamPerformanceChart, generateTopScorerChart, generateAttendanc
          generateTeamGoalsChart, generateSeasonResultChart, generateTableGoalStatsChart } from "./build_chart.js";
 
 const tableGoalStats = [
-    ["INTER", 54, 18, 36],
-    ["Arsenal 20", 23, 24, -1],
-    ["Juventus 20", 38, 25, 13],
-    ["Slim Jackets", 31, 18, 13],
-    ["Tailgators", 27, 32, -5],
-    ["AVQP", 17, 65, -48],
-    ["FC Fenerbahce", 36, 44, -8],
-    ["True FC", 34, 36, -2],
-    ["Los Intergalacticos CF", 20, 33, -13]
+    ["INTER", 58, 20, 38],
+    ["Arsenal 20", 31, 32, -1],
+    ["Juventus 20", 41, 29, 12],
+    ["Slim Jackets", 39, 24, 15],
+    ["Tailgators", 33, 40, -7],
+    ["AVQP", 21, 68, -47],
+    ["FC Fenerbahce", 44, 52, -8],
+    ["True FC", 38, 42, -4],
+    ["Los Intergalacticos CF", 26, 37, -11]
 ];
 
 function load_data(){
@@ -59,7 +59,7 @@ function preprocessData(data){
     generateTopScorerChart(topScorerLabels, topScorerData, maxGoals);
     generateAttendanceChart(attendanceLabels, attendanceData, maxAttendance);
     generateTeamGoalsChart(goalsLabels, goalsData);
-    generateSeasonResultChart(seasonResultLabels, seasonResultData);
+    // generateSeasonResultChart(seasonResultLabels, seasonResultData);
 };
 
 function getLabelsAndData(obj){
