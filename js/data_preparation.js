@@ -2,15 +2,15 @@ import { generateTeamPerformanceChart, generateTopScorerChart, generateAttendanc
          generateTeamGoalsChart, generateSeasonResultChart, generateTableGoalStatsChart } from "./build_chart.js";
 
 const tableGoalStats = [
-    ["INTER", 58, 20, 38],
-    ["Arsenal 20", 31, 32, -1],
-    ["Juventus 20", 41, 29, 12],
-    ["Slim Jackets", 39, 24, 15],
-    ["Tailgators", 33, 40, -7],
-    ["AVQP", 21, 68, -47],
-    ["FC Fenerbahce", 44, 52, -8],
-    ["True FC", 38, 42, -4],
-    ["Los Intergalacticos CF", 26, 37, -11]
+    ["INTER", 68, 27, 41],
+    ["Arsenal 20", 37, 40, -3],
+    ["Juventus 20", 48, 31, 17],
+    ["Slim Jackets", 49, 29, 20],
+    ["Tailgators", 35, 47, -12],
+    ["AVQP", 30, 77, -47],
+    ["FC Fenerbahce", 53, 61, -8],
+    ["True FC", 45, 52, -7],
+    ["Los Intergalacticos CF", 31, 47, -16]
 ];
 
 function load_data(){

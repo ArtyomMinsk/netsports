@@ -338,14 +338,22 @@ export function generateTableGoalStatsChart(teamLabels, GF, GA, GD){
                 labels: {
                     render: function (args){ return "";}
                 }
+            },
+            scales: {
+                xAxes: [{
+                    // scaleLabel: {
+                    //     display: true,
+                    //     labelString: "Attended Games",
+                    //     fontSize: 14
+                    // },
+                    ticks: {
+                        beginAtZero: true,
+                        // stepSize: 1,
+                        // suggestedMax: maxAttendance + 1
+                    }
+                    // offsetGridLines: true
+                }]
             }
-            // scale: {
-            //     beginAtZero: true,
-            //     ticks: {
-            //         stepSize: 1,
-            //         suggestedMax: seasonResultData.reduce((a,b) => a + b, 0)
-            //     }
-            // }
 
         }
     });
